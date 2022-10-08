@@ -19,7 +19,7 @@ export default function Cart() {
 
     function handlePush(id) {
         dispatch(toggleCart(false))
-        router.push(/product_detail?id=${id})
+        router.push(`/product_detail?id=${id}`)
     }
 
     var totalPrice = 0;
