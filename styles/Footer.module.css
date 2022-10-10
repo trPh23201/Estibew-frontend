@@ -1,7 +1,7 @@
-.footer{
+.footer {
     color: white;
     display: block;
-    border-top: 3px solid rgba(117,208,199);
+    border-top: 3px solid rgba(117, 208, 199);
     background-color: black;
     margin-top: 7%;
     padding-top: 3%;
@@ -9,7 +9,8 @@
     width: auto;
     text-decoration: none;
 }
-.mld-grid{
+
+.mld-grid {
     display: flex;
     justify-content: flex-end;
     flex-flow: row wrap;
@@ -17,29 +18,57 @@
     margin: 0 auto 0 auto;
     padding-right: 5%;
 }
-.mld-grid div{
+
+.mld-grid div {
     text-align: right;
 }
-.footer-link{
+
+.footer-link {
     width: 15%;
 }
-.footer-link a{
-    color: rgba(224,225,209);
+
+.footer-link a {
+    color: rgba(224, 225, 209);
 }
-.footer-link a:hover{
+
+.footer-link a:hover {
     text-decoration: none;
-    color: rgba(160,153,147);
+    color: rgba(160, 153, 147);
 }
-.footer-link ul{
+
+.footer-link ul {
     list-style-type: none;
 }
-.footer-bottom{
+
+.footer-bottom {
     width: 100%;
     text-align: right;
     padding-right: 5%;
     color: white;
     font-size: 12px;
 }
-.footer-icon{
+
+.footer-icon {
     margin-left: 14px;
+}
+
+@media (min-width: 992px) {
+    .footer-link{
+        width: 18%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .footer-link{
+        width: 25%;
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-link{
+        width: 33%;
+    }
+    .footer-bottom {
+        margin-top: 15px;
+    }    
 }

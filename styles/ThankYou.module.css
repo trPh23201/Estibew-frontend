@@ -1,0 +1,18 @@
+.frame{
+    height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.frame h1{
+    color: white;
+    white-space: pre-line;
+    text-align: center;
+}
+
+.frame a{
+    font-size: 20px;
+    color: rgb(192, 192, 192);
+}
