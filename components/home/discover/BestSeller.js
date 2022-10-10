@@ -6,7 +6,7 @@ export default function BestSeller({ games }) {
     return (
         <Container>
             <Row>
-                <Col md={{ span: 8, offset: 2 }}>
+                <Col sm={12}  md={{ span: 10, offset: 1 }}  lg={{ span: 8, offset: 2 }} >
                     <Carousel className={style.carousel} interval={1500}>
                         <Carousel.Item>
                             <Image src={games[0]?.image} alt={games[0]?.name} className={style.image} />

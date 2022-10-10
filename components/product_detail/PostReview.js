@@ -10,49 +10,46 @@ export default function PostReview({ game, setGame }) {
 
     function handlePost() {
         setSpin(true)
-        const token = getCookie('token')
-        const data = verifyToken(token)
-        if (data) {
-            if (data.name === '') {
-                setTimeout(() => {
-                    alert("You haven't tell us what is your name, please go to your profile and enter your name!")
-                    setSpin(false)
-                }, 1500)
-            } else {
-                const cmt = {
-                    userId: data.id,
-                    userName: data.name,
-                    gameId: game.id,
-                    gameName: game.name,
-                    rate: like === 'yes' ? true : false,
-                    comment: JSON.parse(JSON.stringify(text)),
-                    created: (new Date()).toJSON()
-                }
-                const clone = { ...game }
-                clone.reviews.unshift(cmt)
-                setTimeout(() => {
-                    setGame(clone)
-                    setSpin(false)
-                    postComment(cmt);
-                    setText('')
-                    setLike(null)
-                }, 1500)
-            }
-        } else {
-            resignToken()
-            handlePost()
-        }
+
+        
+        // const token = getCookie('token')
+        // const data = verifyToken(token)
+        // if (data) {
+        //     if (data.name === '') {
+        //         setTimeout(() => {
+        //             alert("You haven't tell us what is your name, please go to your profile and enter your name!")
+        //             setSpin(false)
+        //         }, 1500)
+        //     } else {
+        //         const cmt = {
+        //             userId: data.id,
+        //             userName: data.name,
+        //             gameId: game.id,
+        //             gameName: game.name,
+        //             rate: like === 'yes' ? true : false,
+        //             comment: JSON.parse(JSON.stringify(text)),
+        //             created: (new Date()).toJSON()
+        //         }
+        //         const clone = { ...game }
+        //         clone.reviews.unshift(cmt)
+        //         setTimeout(() => {
+        //             setGame(clone)
+        //             setSpin(false)
+        //             postComment(cmt);
+        //             setText('')
+        //             setLike(null)
+        //         }, 1500)
+        //     }
+        // } else {
+        //     resignToken()
+        //     handlePost()
+        // }
     }
 
     function validate() {
-        const token = getCookie('token')
-        if (!token) {
-            alert('Please login first!')
-        } else {
-            if (text.length === 0) alert('Please enter your comment!')
-            else if (like === null) alert('Please rate for this game!')
-            else handlePost()
-        }
+        if (text.length === 0) alert('Please enter your comment!')
+        else if (like === null) alert('Please rate for this game!')
+        else handlePost()
     }
 
     return (

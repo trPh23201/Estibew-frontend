@@ -1,20 +1,84 @@
-import { Modal, Button, Row, Col, Container } from "react-bootstrap";
+import { Modal, Button, Row, Col, Container, Spinner } from "react-bootstrap";
 import style from "../styles/Cart.module.css"
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { BsFillTrashFill } from "react-icons/bs"
 import { useDispatch } from "react-redux";
+import { remove, removeAll } from "../features/reducerCart";
 import { useSelector } from "react-redux";
 import { toggleCart } from "../features/reducerShowCart";
+import { buyGames, resignToken, updateTotalPaid, verifyToken } from "../utils/auth";
+import { getCookie } from "../utils/cookie";
+import { fetchPurchased } from "../utils/fetch";
+import { useState } from "react";
 
-export default function Cart() {
+export default function Cart({ token, setToken }) {
     const cart = useSelector(state => state.cart);
     const show = useSelector(state => state.showCart);
+    const [spin, setSpin] = useState(false)
     const dispatch = useDispatch()
     const router = useRouter()
 
-    async function handleBuy(token) {
+    async function handleBuy() {
+        if (cart.length === 0) alert('Nothing to buy')
+        else {
+            setSpin(true)
+            const token = localStorage.getItem("token")
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/payment/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    cart,
+                    success: 'http://localhost:3000/thankyou',
+                    cancel: 'http://localhost:3000'
+                })
+            })
+            const check = await res.json()
+            if (check.success === false){
+                alert(check.message)
+                setSpin(false)
+            } 
+            else {
+                localStorage.setItem("payId", check.id)
+                router.push(check.url)
+            }
 
+
+
+            // setSpin(true)
+            // const data = verifyToken(token);
+            // if (data) {
+            //     const pur = await fetchPurchased(data.id)
+            //     const str = '';
+            //     cart?.map(el1 => {
+            //         pur?.forEach(el2 => {
+            //             if (el1.id === el2.gameId) str += `${el1.name}, `
+            //         })
+            //     });
+            //     if (str === '') {
+            //         cart?.forEach(game => {
+            //             buyGames(game, data.id)
+            //         });
+            //         updateTotalPaid(data.id, totalPrice)
+            //         setTimeout(() => {
+            //             alert('Thank you!')
+            //             setSpin(false)
+            //             dispatch(removeAll())
+            //         }, 1000)
+            //     } else {
+            //         alert(`${str.slice(0, -2)} already purchased please remove`)
+            //         setSpin(false)
+            //     }
+            // } else {
+            //     resignToken()
+            //     setToken(getCookie("token"))
+            //     handleBuy(getCookie("token"))
+            // }
+        }
+        //  else alert('You must login first!')
     }
 
     function handlePush(id) {
@@ -67,8 +131,20 @@ export default function Cart() {
             </Modal.Body>
             <Modal.Footer>
                 <h4>Total price: {totalPrice.toFixed(2)}$</h4>&emsp;
-                <Button variant="success" >Buy now</Button>
-                <Button variant="warning">Remove all</Button>
+                {spin ?
+                    <Button variant="success" disabled>
+                        <Spinner
+                            as="span"
+                            animation="border"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        {' '}Buy....
+                    </Button> :
+                    <Button variant="success" onClick={() => handleBuy()} >Buy now</Button>
+                }
+                <Button variant="warning" onClick={() => dispatch(removeAll())}>Remove all</Button>
             </Modal.Footer>
         </Modal>
     );

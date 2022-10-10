@@ -29,7 +29,7 @@ export default function Products({ games, colSm, colMd, colLg }) {
     function renderGames() {
         if (games.length === 0) {
             return (
-                <h1 style={{ textAlign: "center", color: "white" }}>No games found</h1>
+                <h1 className={style['no-game']}>No games found</h1>
             )
         }
 

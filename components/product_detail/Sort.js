@@ -28,9 +28,9 @@ export default function Sort({ game, setGame }) {
     }
 
     return (
-        <Dropdown className={style.dropdown}>
+        <Dropdown className={style.layout}>
             <Dropdown.Toggle variant="dark" id="dropdown" className={style.dropdown_button}>
-                <span style={{ color: 'gray' }}>Sort by: </span>{sort}
+                <span className={style.label}>Sort by: </span>{sort}
             </Dropdown.Toggle>
             <Dropdown.Menu variant="dark">
                 <Dropdown.Item onClick={() => handleSort('Recent')}>

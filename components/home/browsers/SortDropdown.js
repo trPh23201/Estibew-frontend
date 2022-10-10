@@ -24,8 +24,8 @@ export default function SortDropdown() {
 
     return (
         <Dropdown className={style.layout}>
-            <Dropdown.Toggle variant="dark" id="dropdown-basic" className={style.button}>
-                <span style={{ color: "gray" }}>Sort by:</span> {returnSort()}
+            <Dropdown.Toggle variant="dark" id="dropdown-basic">
+                <span className={style.label}>Sort by:</span> {returnSort()}
             </Dropdown.Toggle>
             <Dropdown.Menu variant="dark">
                 <Dropdown.Item onClick={() => sortGames("sold", "desc")}>

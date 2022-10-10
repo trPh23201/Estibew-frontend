@@ -44,7 +44,7 @@ export default function Reviews({ game }) {
                             <h4 className={el.like ? style.rate : style.non_rate}>
                                 {el.like ? 'Recommend' : 'Not Recommend'}
                             </h4>
-                            <span style={{ whiteSpace: "pre-line"}}>{el.comment}</span>
+                            <span className={style.comment_body}>{el.comment}</span>
                         </Toast.Body>
                     </Toast>
                 </Col >
@@ -55,7 +55,7 @@ export default function Reviews({ game }) {
     return (
         <Row>
             {renderReviews()}
-            {game?.reviews.length === 0 && <h1 style={{ textAlign: 'center', color: 'gray' }} >No comments yet be the first one!</h1>}
+            {game?.reviews.length === 0 && <h1 className={style.no_comment} >No comments yet be the first one!</h1>}
         </Row>
     )
 }

@@ -1,6 +1,5 @@
 import style from "../styles/Footer.module.css"
 import { BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs"
-// Create
 
 export default function Layout() {
     return (
