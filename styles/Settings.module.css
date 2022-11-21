@@ -1,0 +1,34 @@
+.setting {
+    color: grey;
+    margin-top: 20px;
+}
+
+.setting_active {
+    color: white;
+    margin-top: 20px;
+    animation: mymove 0.4s;
+}
+
+@keyframes mymove {
+    0% {
+        color: grey;
+    }
+
+    100% {
+        color: white;
+    }
+}
+
+.switch_frame {
+    position: relative;
+}
+
+.switch {
+    position: absolute;
+    top: 25%;
+    height: 50%;
+}
+
+.switch input{
+    cursor: pointer;
+}

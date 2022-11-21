@@ -1,12 +1,12 @@
 import style from "../styles/Footer.module.css"
 import { BsFacebook, BsTwitter, BsInstagram } from "react-icons/bs"
 
-export default function Layout() {
+export default function Footer() {
     return (
         <footer className={style.footer}>
             <div className={style["mld-grid"]}>
                 <div className={style["footer-link"]}>
-                    <h6>Support</h6>
+                    <h4>Support</h4>
                     <ul>
                         <li>
                             <a href="#">Website FAQs</a>

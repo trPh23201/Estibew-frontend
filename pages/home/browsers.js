@@ -9,7 +9,7 @@ import SortDropdown from "../../components/home/browsers/SortDropdown";
 import Pagination from "../../components/home/browsers/Pagination";
 import { queryByEnterUrl } from "../../utils/query";
 import { useRouter } from "next/router";
-import MenuBar from "../../components/MenuBar";
+import style from "../../styles/Browser.module.css"
 
 export default function Browsers({ gamesList, tags, totalPage, currentPage }) {
     const [games, setGames] = useState(gamesList)
@@ -22,8 +22,15 @@ export default function Browsers({ gamesList, tags, totalPage, currentPage }) {
     useEffect(() => {
         if (notInitialRender.current) {
             async function fetchItem() {
+                const token = localStorage.getItem("token")
                 const query = queryByEnterUrl(_page, _limit, _sort, _order, _tags, name)
-                const res = await fetch(${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/game?${query})
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/game?${query}`, {
+                    ...(token && {
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                        },
+                    })
+                })
                 const gamesList = await res.json()
                 setGames(gamesList.data)
                 setTotal(gamesList.totalPage)
@@ -36,14 +43,14 @@ export default function Browsers({ gamesList, tags, totalPage, currentPage }) {
     }, [_page, _limit, _sort, _order, _tags, name])
 
     return (
-        <>
+        <div>
             <Choose
                 setGames={data => setGames(data)}
                 setTotal={data => setTotal(data)}
                 setCurrent={data => setCurrent(data)}
             />
             <Container>
-                <Row>
+                <Row className={style.frame}>
                     <Col lg={9} md={9} sm={12}>
                         <Row>
                             <SortDropdown />
@@ -58,7 +65,7 @@ export default function Browsers({ gamesList, tags, totalPage, currentPage }) {
                     </Col>
                 </Row>
             </Container>
-        </>
+        </div>
     )
 }
 
@@ -66,8 +73,8 @@ export async function getServerSideProps(context) {
     try {
         const { _page, _limit, _sort, _order, _tags, name } = context.query;
         const query = queryByEnterUrl(_page, _limit, _sort, _order, _tags, name)
-        const res1 = await fetch(${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/game?${query})
-        const res2 = await fetch(${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/tag)
+        const res1 = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/game?${query}`)
+        const res2 = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/tag`)
         const games = await res1.json()
         const tags = await res2.json()
         if (games.success === false || tags.success === false) return { notFound: true }
@@ -91,7 +98,6 @@ Browsers.getLayout = function getLayout(page) {
     return (
         <Layout>
             <Head><title>Browsers</title></Head>
-            <MenuBar />
             {page}
         </Layout>
     )

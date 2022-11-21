@@ -1,16 +1,29 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Form, Row, Stack } from "react-bootstrap";
 import style from "../../styles/Choose.module.css";
-import { fetchGames } from "../../utils/fetch";
-import { queryBySearch } from "../../utils/query";
 
-export default function Choose({ setGames, setTotal, setCurrent }) {
+export default function Choose() {
     const router = useRouter()
     const { pathname, asPath } = router;
     const { _page, _limit, _sort, _order, _tags, name } = router.query;
     const [keyWord, setKeyWord] = useState(name ? name : '')
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token")
+        async function active(){
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}`, {
+                ...(token && {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                })
+            })
+            await res.json()
+        }
+        active()
+    },[])
 
     async function search(e) {
         if (e.key === 'Enter') {

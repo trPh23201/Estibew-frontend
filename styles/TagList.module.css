@@ -7,10 +7,17 @@
   background-color: inherit;
   color: white;
 }
+.tag_list .btnX{
+  margin-bottom: 10px;
+  cursor: pointer;
+  background-color: inherit;
+  color: white;
+  border-left: 0px;
+}
 .tag_list .item{
   background-color: inherit;
   color: grey;
-  border: 1px solid rgb(18,18,18);
+  border: 1px solid var(--background-color);
 }
 .tag_list .item:hover{
   color: white;
@@ -29,4 +36,16 @@
   right: 10%;
   top: 35%;
   color: white;
+}
+
+@media (min-width: 992px) {
+
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+@media (max-width: 767px) {
+
 }

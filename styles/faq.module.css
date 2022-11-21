@@ -1,0 +1,23 @@
+.wrapper {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    background-color: var(--background-color);
+    height: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 20px 0px;
+}
+.wrapper h3 {
+    font-weight: 500;
+    text-align: center;
+    padding-top: 20px;
+}
+.wrapper a {
+    text-decoration: none;
+}
+.wrapper a:hover {
+    color: rgba(191, 153, 0, 0.6);
+    text-decoration: underline;
+}
+.wrapper p {
+    margin-bottom: 5px;
+}

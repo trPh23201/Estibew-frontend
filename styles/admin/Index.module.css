@@ -1,0 +1,5 @@
+.wrapper {
+    display: flex;
+    background-color: var(--background-color);
+    color: #fff;
+}

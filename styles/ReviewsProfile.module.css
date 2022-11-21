@@ -1,0 +1,24 @@
+.table{
+    margin-top: 20px;
+}
+.table th{
+    text-align: center;
+}
+.table td{
+    text-align: center;
+}
+.table .button{
+    padding: 0rem 0.5rem;
+}
+
+.rate{
+    color: greenyellow !important;
+}
+.non_rate{
+    color: red !important;
+}
+
+.modal{
+    background-color: rgb(34, 34, 34);
+    color: white;
+}

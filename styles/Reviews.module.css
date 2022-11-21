@@ -21,10 +21,21 @@
     overflow: auto;
 }
 .toast .body .rate{
+    display: flex;
+    align-items: center;
     color: greenyellow;
 }
 .toast .body .non_rate{
+    display: flex;
+    align-items: center;
     color: red;
+}
+.toast .body img{
+    height: 38px;
+}
+.toast .body span{
+    display: inline-block;
+    height: 32px;
 }
 
 .no_comment{
@@ -34,4 +45,19 @@
 
 .comment_body{
     white-space: pre-line;
+}
+
+.avatar{
+    border-radius: 18px;
+    height: 18px;
+    width: 18px;
+}
+
+.center_ver{
+    display: flex;
+    align-items: center;
+}
+
+.user_badge:hover{
+    filter: brightness(70%);
 }
