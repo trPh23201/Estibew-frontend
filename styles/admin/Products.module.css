@@ -1,0 +1,120 @@
+.wrapper {
+    margin: 40px 0px;
+}
+
+.searchForm {
+    margin-left: 10px;
+    background-color: inherit;
+    color: white;
+}
+
+.searchForm:focus {
+    background-color: inherit;
+    color: white;
+}
+
+.table {
+    border: 1px solid gray;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.table img {
+    width: 185px;
+    height: 70px;
+    border-radius: 0;
+}
+
+.table td,
+.table tr {
+    color: #fff;
+}
+
+.table .text_strong {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.table .primary {
+    background-color: green;
+}
+
+.table .primary,
+.table .red {
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table .red {
+    background-color: red;
+}
+
+.table .green {
+    background-color: green;
+}
+
+.table .text_center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table .item_center {
+    display: flex;
+    margin-left: 40px;
+}
+
+.table .item {
+    transform: translateX(25%);
+}
+
+.table .flex {
+    display: flex;
+    transform: translateX(70px);
+}
+
+.table .info {
+    margin-left: -50px;
+    width: 100%;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+
+.pagination>li>a {
+    background-color: inherit;
+    color: grey;
+    border: none;
+    box-shadow: none !important;
+}
+
+.pagination>li>span {
+    color: white;
+    background-color: inherit !important;
+    border: none;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: white;
+    background-color: inherit;
+}
+
+.modal_head {
+    color: black;
+    background-color: rgb(93 156 255)
+}
+
+.modal_head button {
+    background-color: white;
+}
+
+.modal_body {
+    color: black;
+    background-color: rgb(160 197 255)
+}

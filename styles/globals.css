@@ -1,8 +1,12 @@
+:root {
+  --background-color: rgb(19, 19, 19);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  background-color: rgb(18,18,18) !important;
+  background-color: var(--background-color) !important;
   font-family: Georgia;
   font-size: 16px;
   font-weight: 100;
@@ -16,3 +20,5 @@ a {
 * {
   box-sizing: border-box;
 }
+
+

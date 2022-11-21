@@ -1,0 +1,78 @@
+.wrapper {
+    margin: 40px 0px;
+}
+.searchForm {
+    margin-left: 10px;
+    background-color: inherit;
+    color: white;
+}
+
+.searchForm:focus {
+    background-color: inherit;
+    color: white;
+}
+.table {
+    border: 1px solid gray;
+    margin-top: 30px;
+    width: 100%;
+}
+.table img {
+    width: 48px;
+    border-radius: 50%;
+}
+.table td, .table tr {
+    color: #fff;
+}
+.table .text_strong {
+    font-weight: 700;
+}
+.table .primary {
+    background-color: green;
+}
+.table .primary, .table .red {
+    border-radius: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.table .red {
+    background-color: red;
+}
+.table .text_center {
+    text-align: center;
+    vertical-align: middle;
+}
+.table .item_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 40px;
+}
+.table .flex {
+    display: flex;
+    transform: translateX(70px);
+}
+.table .info {
+    margin-left: -40px;
+    width: 100%;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+.pagination > li > a {
+    background-color: inherit;
+    color: grey;
+    border: none;
+    box-shadow: none !important;
+}
+.pagination > li > span {
+    color: white;
+    background-color: inherit !important;
+    border: none;
+}
+.pagination > li > a:focus, .pagination > li > a:hover, .pagination > li > span:focus, .pagination > li > span:hover {
+    color: white;
+    background-color: inherit;
+}

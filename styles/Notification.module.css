@@ -1,0 +1,98 @@
+.noti_frame {
+    border: 1px solid rgb(12, 33, 49);
+    background-color: black;
+}
+
+.noti_head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.noti_head img {
+    height: 20px;
+}
+
+.noti_head button {
+    height: 30px;
+}
+
+.noti_head .item {
+    display: flex;
+    align-items: center;
+}
+
+.noti_head .item:first-child {
+    width: 84%;
+}
+
+.noti_head .item .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.noti_body {
+    background-color: rgb(37, 53, 68);
+}
+
+.select_btn {
+    margin-left: 17px;
+}
+
+.select_btn input {
+    cursor: pointer;
+}
+
+.action {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.action button {
+    /* margin-bottom: 5px; */
+    margin-left: 6px;
+}
+
+.pagination {
+    justify-content: center;
+}
+
+.pagination>li>a {
+    background-color: inherit;
+    color: grey;
+    border: none
+}
+
+.pagination>li>span {
+    color: white;
+    background-color: inherit !important;
+    border: none;
+}
+
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: white;
+    background-color: inherit;
+    box-shadow: none;
+}
+
+
+@media (min-width: 992px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .noti_head .item:first-child {
+        width: 78%;
+    }
+}
+
+@media (max-width: 767px) {
+    .noti_head .item:first-child {
+        width: 76%;
+    }
+}

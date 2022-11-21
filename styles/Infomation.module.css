@@ -1,0 +1,104 @@
+.avatar_view {
+    min-width: 100%;
+    max-width: 100%;
+    border: 5px groove white
+}
+
+.avatar {
+    min-width: 100%;
+    max-width: 100%;
+    border: 5px groove white;
+    cursor: pointer;
+}
+
+.avatar:hover {
+    filter: brightness(70%);
+}
+
+.h {
+    border-top: 2px solid;
+    border-color: grey;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.switchProfile input {
+    height: 18px;
+    width: 40px !important;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.switchProfile label {
+    font-size: 18px;
+}
+
+.phone_input {
+    position: relative;
+    color: black;
+
+}
+
+.phone_input.disable div > input {
+    cursor: default;
+    filter: brightness(90%);
+}
+.phone_input.disable div > div {
+    cursor: default;
+    filter: brightness(94%);
+}
+
+.phone_input button {
+    position: absolute;
+    top: 0;
+    left: 314px;
+    height: 36px;
+    width: 36px;
+    background-color: #e9ecef;
+    color: black;
+}
+
+.phone_input.enable button:last-child {
+    left: 350px;
+}
+
+.bio_btn {
+    position: absolute;
+    background-color: #e9ecef;
+    border: 1px solid #ced4da !important;
+    color: black;
+}
+
+.bio_btn:hover {
+    background-color: #e9ecef;
+}
+
+.bio_btn_open {
+    top: 0;
+    right: 0;
+}
+
+.bio_btn_action {
+    top: 0;
+    right: -41px;
+}
+
+.bio_btn_action:last-child {
+    top: 37px;
+    right: -41px;
+}
+
+
+@media (min-width: 992px) {}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 767px) {
+    .row {
+        flex-direction: column-reverse;
+    }
+}

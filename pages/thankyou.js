@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import Layout from "../components/Layout";
-import MenuBar from "../components/MenuBar";
 import { removeAll } from "../features/reducerCart";
 import style from "../styles/ThankYou.module.css"
 
@@ -23,10 +22,10 @@ export default function ThankYou() {
             })
             const response = await res.json()
             if (response.success === false) {
-                setMessage("Hi have a good day!")
+                setMessage("Thank you for your visited!")
             }
             else {
-                setMessage("Thanks for your purchase\nDownload games in your profile/purchased")
+                setMessage("Thanks for your purchase\nDownload games in your profile")
                 localStorage.removeItem('payId')
                 dispatch(removeAll())
             }
@@ -46,7 +45,6 @@ ThankYou.getLayout = function getLayout(page) {
     return (
         <Layout>
             <Head><title>Thank you</title></Head>
-            <MenuBar />
             {page}
         </Layout>
     )

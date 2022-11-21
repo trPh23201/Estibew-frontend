@@ -7,9 +7,6 @@ import { useDispatch } from "react-redux";
 import { remove, removeAll } from "../features/reducerCart";
 import { useSelector } from "react-redux";
 import { toggleCart } from "../features/reducerShowCart";
-import { buyGames, resignToken, updateTotalPaid, verifyToken } from "../utils/auth";
-import { getCookie } from "../utils/cookie";
-import { fetchPurchased } from "../utils/fetch";
 import { useState } from "react";
 
 export default function Cart({ token, setToken }) {
@@ -26,59 +23,28 @@ export default function Cart({ token, setToken }) {
             const token = localStorage.getItem("token")
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/payment/create`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
+                ...(token && {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                }),
                 body: JSON.stringify({
                     cart,
-                    success: 'http://localhost:3000/thankyou',
-                    cancel: 'http://localhost:3000'
+                    success: `${process.env.NEXT_PUBLIC_CLIENT_ENDPOINT}/thankyou`,
+                    cancel: `${process.env.NEXT_PUBLIC_CLIENT_ENDPOINT}`
                 })
             })
             const check = await res.json()
-            if (check.success === false){
+            if (check.success === false) {
                 alert(check.message)
                 setSpin(false)
-            } 
+            }
             else {
                 localStorage.setItem("payId", check.id)
                 router.push(check.url)
             }
-
-
-
-            // setSpin(true)
-            // const data = verifyToken(token);
-            // if (data) {
-            //     const pur = await fetchPurchased(data.id)
-            //     const str = '';
-            //     cart?.map(el1 => {
-            //         pur?.forEach(el2 => {
-            //             if (el1.id === el2.gameId) str += `${el1.name}, `
-            //         })
-            //     });
-            //     if (str === '') {
-            //         cart?.forEach(game => {
-            //             buyGames(game, data.id)
-            //         });
-            //         updateTotalPaid(data.id, totalPrice)
-            //         setTimeout(() => {
-            //             alert('Thank you!')
-            //             setSpin(false)
-            //             dispatch(removeAll())
-            //         }, 1000)
-            //     } else {
-            //         alert(`${str.slice(0, -2)} already purchased please remove`)
-            //         setSpin(false)
-            //     }
-            // } else {
-            //     resignToken()
-            //     setToken(getCookie("token"))
-            //     handleBuy(getCookie("token"))
-            // }
         }
-        //  else alert('You must login first!')
     }
 
     function handlePush(id) {
@@ -92,16 +58,16 @@ export default function Cart({ token, setToken }) {
             totalPrice += el.price
             return (
                 <Row className={style.row} key={key}>
-                    <Col sm={4} className={style.img_frame}>
+                    <Col xs={4} sm={4} className={style.img_frame}>
                         <Image priority src={el.image} layout="fill" alt={el.name} onClick={() => handlePush(el.id)} ></Image>
                     </Col>
-                    <Col sm={5} >
+                    <Col xs={5} sm={5} >
                         <h4>{el.name}</h4>
                     </Col>
-                    <Col sm={2}>
+                    <Col xs={2} sm={2}>
                         <h4>{el.price}$</h4>
                     </Col>
-                    <Col sm={1}>
+                    <Col xs={1} sm={1}>
                         <Button variant="danger" onClick={() => dispatch(remove(el.id))}>
                             <BsFillTrashFill className={style.remove} />
                         </Button>
@@ -113,11 +79,10 @@ export default function Cart({ token, setToken }) {
 
     return (
         <Modal
+            fullscreen={'lg-down'}
             show={show}
             onHide={() => dispatch(toggleCart(false))}
             size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">

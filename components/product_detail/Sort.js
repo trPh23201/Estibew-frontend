@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Dropdown } from "react-bootstrap";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import style from "../../styles/SortDropdown.module.css"
 
 export default function Sort({ game, setGame }) {
@@ -28,6 +28,7 @@ export default function Sort({ game, setGame }) {
     }
 
     return (
+
         <Dropdown className={style.layout}>
             <Dropdown.Toggle variant="dark" id="dropdown" className={style.dropdown_button}>
                 <span className={style.label}>Sort by: </span>{sort}

@@ -5,7 +5,7 @@ export default function Root() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push(/home/discover)
+    router.push(`/home/discover`)
   })
 
   return (
