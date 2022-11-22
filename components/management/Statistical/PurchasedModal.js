@@ -58,7 +58,7 @@ export default function PurchasedModal({ show, handleClose, style, filter, purch
                             {returnPurchased()}
                         </tbody>
                     </Table>
-                    <h3 style={{ textAlign: 'right' }} >Total money: {total}$</h3>
+                    <h3 style={{ textAlign: 'right' }} >Total money: {total.toFixed(2)}$</h3>
                 </Container>
             </Modal.Body>
         </Modal>
