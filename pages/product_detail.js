@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import Reviews from "../components/product_detail/Reviews";
 import Game from "../components/product_detail/Game";
 import PostReview from "../components/product_detail/PostReview";
-import Sort from "../components/product_detail/sort";
+import Sort from "../components/product_detail/Sort";
 import { useState } from "react";
 import Head from "next/head";
 import { Container } from "react-bootstrap";
