@@ -2,7 +2,7 @@ import { Button, Container, Modal, Table } from "react-bootstrap";
 import moment from 'moment'
 
 export default function PurchasedModal({ show, handleClose, style, filter, purchased }) {
-    const total = 0;
+    let total = 0;
     function returnPurchased() {
         return purchased.result?.map((item, index) => {
             function renderTags() {
